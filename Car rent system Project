@@ -1,0 +1,33 @@
+class CarShop: # Create class
+    def __init__(self, stock): #This is the constructor method for the CarShop class
+        self.stock = stock
+
+    def display_car(self):# This method is used to display the current stock of cars in the rental shop.
+        print("Total cars:", self.stock)
+
+    def rent_for_car(self, q): # This method allows a user to rent a certain quantity of cars (specified by q).
+        if q <= 0:
+            print("Enter a positive value greater than zero")
+        elif q > self.stock:
+            print("Not enough cars available")
+        else:
+            total_price = q * 5000
+            self.stock -= q
+            print("Total price per day:", total_price)
+            print("Remaining car Quantity:", self.stock)
+
+while True: #The while True: loop is an infinite loop, meaning it will continue running until the user decides to exit.
+    obj = CarShop(100) #initial stock of 100 cars.
+    uc = int(input('''
+    1 Display stock
+    2 Rent a car
+    3 Exit
+    '''))  # It displays a menu to the user
+
+    if uc == 1:
+        obj.display_car()
+    elif uc == 2:
+        n = int(input("Enter the Car quantity For rent : "))
+        obj.rent_for_car(n)
+    elif uc == 3:
+        break
